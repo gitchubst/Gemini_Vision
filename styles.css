@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body.gemini-extension-active {
+  user-select: none;
+}
+
+#gemini-screenshot-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 100, 200, 0.1);
+  z-index: 2147483645;
+  cursor: crosshair;
+}
+
+#gemini-selection-rectangle {
+  position: absolute;
+  border: 2px dashed #007bff;
+  background-color: rgba(0, 123, 255, 0.2);
+  z-index: 2147483646;
+}
+
+#gemini-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 480px;
+  max-width: 90vw;
+  min-height: 450px;
+  max-height: 85vh;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+#gemini-popup-header {
+  background-color: #e9ecef;
+  padding: 12px 18px;
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ced4da;
+}
+
+#gemini-popup-header span {
+  font-weight: 600;
+  color: #212529;
+  font-size: 17px;
+}
+
+#gemini-popup-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #495057;
+  padding: 0 5px;
+  line-height: 1;
+}
+#gemini-popup-close:hover {
+  color: #000000;
+}
+
+#gemini-popup-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+#gemini-popup-query-input {
+  width: calc(100% - 24px);
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: #ffffff;
+  color: #333;
+}
+#gemini-popup-query-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+#gemini-popup-presets {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#gemini-popup-presets button {
+  flex: 1 1 auto;
+  padding: 10px 12px;
+  background-color: #dee2e6;
+  color: #212529;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#gemini-popup-presets button:hover {
+  background-color: #c8cdd2;
+}
+#gemini-popup-presets button:active {
+  background-color: #babbbe;
+}
+
+
+#gemini-popup-send {
+  padding: 12px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#gemini-popup-send:hover {
+  background-color: #0056b3;
+}
+#gemini-popup-send:active {
+  background-color: #004494;
+}
+
+#gemini-popup-send.loading {
+  background-color: #5a6268;
+  cursor: wait;
+}
+#gemini-popup-send.loading:hover {
+  background-color: #5a6268;
+}
+
+
+#gemini-popup-response-area {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  min-height: 150px;
+  font-size: 15px;
+  color: #333;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-y: auto;
+  flex-grow: 1;
+  max-height: 400px;
+}
+
+#gemini-popup-response-area.error {
+    color: #c82333;
+    background-color: #fdeaec;
+    border-color: #f5c6cb;
+}
+
+#gemini-temp-error {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d9534f;
+    color: white;
+    padding: 12px 18px;
+    z-index: 2147483647;
+    border-radius: 6px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+#gemini-popup-resize-handle {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 12px;
+  height: 12px;
+  cursor: nwse-resize;
+  border-right: 3px solid #aaa;
+  border-bottom: 3px solid #aaa;
+  box-sizing: border-box;
+}
+
+#gemini-popup-resize-handle:hover {
+  border-right-color: #333;
+  border-bottom-color: #333;
+}
