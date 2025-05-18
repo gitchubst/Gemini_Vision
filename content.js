@@ -1,5 +1,5 @@
 (function() {
-    const GEMINI_API_KEY = "AIzaSyAfjz5USw8oHo1lacza2m3z2qwOAjn-gUE";
+    const GEMINI_API_KEY = "PUT_YOUR_KEY";
     const VERSION = "gemini-2.0-flash";
 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${VERSION}:generateContent?key=${GEMINI_API_KEY}`;
