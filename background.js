@@ -1,7 +1,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "geminiScreenshotHelper",
-    title: "Capture for Gemini Vision",
+    title: "Gemini Vision",
     contexts: ["page", "selection"]
   });
   console.log("Gemini Vision Screenshot Helper context menu created/updated for page and selection contexts.");
