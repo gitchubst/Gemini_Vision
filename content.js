@@ -1,5 +1,5 @@
 (function() {
-    const GEMINI_API_KEY = "PUT_YOUR_KEY";
+    const GEMINI_API_KEY = "PUT_YOUR_KEY_HERE";
     const VERSION = "gemini-2.0-flash";
     const TEMPERATURE = 1.0;
 
@@ -247,10 +247,10 @@
                 return;
             }
             const queryText = queryInput.value.trim();
-            sendButton.textContent = 'Sending...';
+            sendButton.textContent = 'Sending';
             sendButton.disabled = true;
             sendButton.classList.add('loading');
-            responseArea.textContent = 'Processing your request...';
+            responseArea.textContent = 'Processing your request';
             responseArea.classList.remove('error');
             const requestBody = {
                 contents: [{
@@ -279,7 +279,9 @@
                 }
                 const data = await response.json();
                 if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-                    responseArea.textContent = data.candidates[0].content.parts[0].text;
+                    let responseText = data.candidates[0].content.parts[0].text;
+                    responseText = responseText.replace(/\*\*/g, ''); // Remove **
+                    responseArea.textContent = responseText;
                 } else if (data.promptFeedback?.blockReason) {
                     const blockMessage = `Blocked: ${data.promptFeedback.blockReason}. ${data.promptFeedback.blockReasonMessage || 'No additional details.'}`;
                     responseArea.textContent = blockMessage;
