@@ -80,7 +80,7 @@ body.gemini-extension-active {
 }
 
 #gemini-popup-query-input {
-  width: calc(100% - 24px);
+  width: calc(100%);
   padding: 12px;
   border: 1px solid #ced4da;
   border-radius: 6px;
