@@ -45,6 +45,17 @@
             overlay.addEventListener('mousemove', handleMouseMove);
             overlay.addEventListener('mouseup', handleMouseUp);
             overlay.addEventListener('mouseleave', cancelSelection);
+
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = '2147483647';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+            overlay.style.cursor = 'crosshair';
+
+            console.log('Gemini extension initialized successfully.');
         }
 
         function handleMouseDown(e) {
@@ -150,13 +161,14 @@
                 selectionRectDiv.remove();
                 selectionRectDiv = null;
             }
+            console.log('Gemini extension cleaned up successfully.');
         }
 
         function cancelSelection() {
             if (isSelecting) {
                 isSelecting = false;
             }
-            cleanupSelection();
+            console.log('Selection canceled, but overlay remains active.');
         }
 
         function showPopup() {
@@ -280,7 +292,7 @@
                 const data = await response.json();
                 if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
                     let responseText = data.candidates[0].content.parts[0].text;
-                    responseText = responseText.replace(/\*\*/g, ''); // Remove **
+                    responseText = responseText.replace(/\*\*/g, '');
                     responseArea.textContent = responseText;
                 } else if (data.promptFeedback?.blockReason) {
                     const blockMessage = `Blocked: ${data.promptFeedback.blockReason}. ${data.promptFeedback.blockReasonMessage || 'No additional details.'}`;
